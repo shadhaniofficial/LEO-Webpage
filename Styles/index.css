@@ -370,7 +370,15 @@ button {
   gap: 0.3rem;
 }
 
+/* About Us */
 
+.purpose-container h2 {
+    margin-top: 20px;
+    color: #2c5c69; /* Match the color with your theme */
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 
 /* Footer */
