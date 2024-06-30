@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto nav-contents">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#about">About Us</a>
@@ -72,12 +72,13 @@
                     <a class="nav-link" href="#ourteam">Our Team</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contactus.html">Contact</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                 </li>
                 
             </ul>
         </div>
     </nav>
+
     <script>
         // Add this JavaScript code in your script section or at the end of your HTML file
         window.addEventListener('scroll', function() {
@@ -89,26 +90,114 @@
             }
         });
     </script>
-
-    <!-- home -->
-    <div class="purpose-container">
-        <h1 class="purpose-heading">Purpose</h1>
-        <p class="purpose-quote">“Leadership is not a position or a title; it is an action and an example”.</p>
-        <p class="purpose-paragraph">
-            LEO Club of CEG is a student body of College of Engineering Guindy, which endeavours to enhance the leadership skills of students by providing them various opportunities and experiences for their overall development. The motto of our club is “Leadership, Experience and Opportunity”; the club improves the leadership and professional skills of students in addition to moulding them into responsible individuals.
-        </p>
-        <p class="purpose-paragraph">
-            Our club organizes various events that fosters the spirit of social responsibility among students; the major events include <em>THULIR</em> and <em>VIDIYAL</em>. Our club has rendered its service to the society by adopting <em>SURYA NAGAR</em>, a slum area near Kotturpuram, Chennai. Free tuitions are given to the children of <em>SURYA NAGAR</em> to help fulfil their dream of acing the UPSC Civil Services Examinations. The most notable programme of our club is the free <em>UPSC COACHING CLASSES</em> conducted for the students of CEG, in association with <em>ARAM IAS ACADEMY</em>; the count of students attending these classes is increasing year-after-year.
-        </p>
-        <p class="purpose-paragraph">
-            LEO Club of CEG, under the patronage of its parent club, <em>Lions Club of South Madras</em>, is one among the oldest functioning clubs of our college. <em>Lions Club of South Madras</em> is a social, non-profit organization whose aim is to meet the needs of communities. Our club is able to conduct various successful events with the support and encouragement from the parent club. In addition to the other events, our club also conducts <em>LEO UTSAV</em>, a fest of cultural and extra-curricular fun activities, which is organized and conducted by the students of CEG; the funds raised through this event is distributed among people requiring help in an effort to fulfil their needs.
-        </p>
-    </div>
-
-    <!-- images -->
-
-
     
+    
+    <!-- Contact us -->
+    <section class="contact section" id="contact">
+        <h1 class="section_title">Contact Us</h1>
+        <span class="section_subtitle">Want to connect? Our inbox is always open!</span>    
+
+        <div class="contact_container">
+            <div>
+                <a href="mailto:leoclub.hr@gmail.com" target="_blank" rel="noopener noreferrer" class="contact_info">
+                
+                    <i class="fa-regular fa-envelope contact_icon"></i>
+                    <div>
+                        <h3 class="contact_title">Email</h3>
+                        <span class="contact_subtitle">leoclub.hr@gmail.com</span>
+                    </div>
+                </a>
+                <a href="https://maps.app.goo.gl/jiJqqTL9BJ7q7Zho9" target="_blank" rel="noopener noreferrer" class="contact_info">
+                    <i class="fa-solid fa-location-dot contact_icon" ></i>
+                    <div>
+                        <h3 class="contact_title">Location</h3>
+                        <span class="contact_subtitle">
+                            LEO Club of CEG,<br /> College of Engineering Guindy,<br /> Chennai - 600025<br />
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <form action="https://formspree.io/f/xayrgrrd" class="contact_form" id="contact-form" method="POST">
+                <div id="alert" class="alert_style"></div>
+                <div class="contact_inputs">
+                    <div class="contact_content">
+                        <label class="contact_label" for="name">Name</label>
+                        <input type="text" name="name" class="contact_input" id="name" required />
+                    </div>
+                    <div class="contact_content">
+                        <label class="contact_label" for="email">Email</label>
+                        <input type="email" name="email" class="contact_input" id="email" required />
+                    </div>
+                </div>
+                <div class="contact_content">
+                    <label class="contact_label" for="subject">Subject</label>
+                    <input type="text" name="subject" class="contact_input" id="subject" required />
+                </div>
+                <div class="contact_content">
+                    <label class="contact_label" for="message">Message</label>
+                    <textarea name="message" cols="0" rows="7" class="contact_input message" id="message" required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="button button-flex">
+                        Send Message
+                        <i class="uil uil-message button_icon"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById("contact-form");
+
+            const handleSubmit = async (event) => {
+                event.preventDefault();
+                var status = document.getElementById("alert");
+                var data = new FormData(event.target);
+
+                try {
+                    const response = await fetch(event.target.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    });
+
+                    if (response.ok) {
+                        status.innerHTML = "Your message has been sent.";
+                        status.style.display = "block";
+                        
+                        // Hide alert after 4 seconds
+                        setTimeout(() => {
+                            status.style.display = "none";
+                        }, 4000);
+                        form.reset();
+                    } else {
+                        throw new Error("Network response was not ok.");
+                    }
+                } catch (error) {
+                    status.innerHTML = "Oops! There was a problem delivering your message, please contact via other means.";
+                    status.style.display = "block";
+                    
+                    // Hide alert after 4 seconds
+                    setTimeout(() => {
+                        status.style.display = "none";
+                    }, 4000);
+                }
+            };
+
+            form.addEventListener("submit", handleSubmit);
+
+            // Cleanup function to remove the event listener
+            return () => {
+                form.removeEventListener("submit", handleSubmit);
+            };
+        });
+    </script>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="content">
@@ -161,16 +250,15 @@
                 <span class="copyright_text">
                     <a href="#">© All Rights Reserved LEO Club of CEG @ 2024</a>
                 </span>
-                <div class="footer-btn">
+                <li class="footer-btn">
                     <button class="f-btn">
                         <i class="fa-regular fa-user" style="color: #ffffff; opacity: 0.6;"></i>
                         Sign In
                     </button>
-                </div>
+                </li>
             </div>
         </div>
     </footer>
-
 
     <!-- Font Awesome JS (for icons) -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
