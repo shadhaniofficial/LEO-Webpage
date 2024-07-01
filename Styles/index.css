@@ -101,7 +101,7 @@ nav {
     font-weight: 600;
     color: #1A4B5F; /* Dark blue */
     margin-bottom: 20px;
-    margin-top: 70px;
+    margin-top: 20px;
   }
   
   /* style.css */
@@ -378,6 +378,12 @@ button {
     font-size: 2em;
     text-align: center;
     margin-bottom: 20px;
+}
+
+/* image */
+.carousel-item img {
+    height: 60vh; /* Set the image height to 50% of the viewport height */
+    object-fit: cover; /* Maintain aspect ratio and cover entire container */
 }
 
 
