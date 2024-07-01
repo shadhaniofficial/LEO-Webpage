@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEO CLUB OF CEG-Admin</title>
+    <link rel="stylesheet" href="Styles/admin.css">
+    
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center">
+                <img src="img/pngegg.png" alt="NSS Logo"> <!-- Path to your logo image -->
+                <strong>LEO CLUB OF CEG</strong>
+            </a>
+            <nav id="navbar" class="navbar">
+                <!-- Static menu structure, dynamically controlled in original React component -->
+                <ul class="nav-links">
+                    <li><a class="nav-link scrollto active" href="#team">Team</a></li>
+                    <li><a class="nav-link scrollto" href="#events">Events</a></li>
+                    <li><a class="nav-link scrollto" href="#activity">UPSC Classes</a></li>
+                    <li><a class="getstarted scrollto" href="/Signout">Sign out</a></li>
+                </ul>
+                <button class="mobile-menu-icon">
+                    <!-- This will toggle between menu icons in React -->
+                    ☰
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        // JavaScript to handle mobile menu toggle and scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+            const navbar = document.getElementById('navbar');
+            let isMobileMenuOpen = false;
+
+            // Handle scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 0) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            // Handle mobile menu toggle
+            mobileMenuIcon.addEventListener('click', () => {
+                isMobileMenuOpen = !isMobileMenuOpen;
+                navbar.classList.toggle('nav-links-mobile', isMobileMenuOpen);
+                mobileMenuIcon.textContent = isMobileMenuOpen ? '✕' : '☰';
+            });
+        });
+    </script>
+</body>
+</html>

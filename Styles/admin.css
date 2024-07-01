@@ -205,3 +205,78 @@ input {
 	transform: translateX(20%);
 }
 
+/* admin nav */
+
+        /* Basic styles for the converted content */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #fff;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header-scrolled {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .container-fluid {
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+          
+            max-height: 40px;
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+        
+        strong, .strong {
+          font-size: 17px;
+          color: #1A4B5F;
+          margin-left: 10px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links, .nav-links-mobile {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-links-mobile {
+            flex-direction: column;
+        }
+        .nav-links li, .nav-links-mobile li {
+            margin: 0 10px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+        }
+        .getstarted {
+            background-color: #1A4B5F;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .mobile-menu-icon {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            display: none; /* Initially hidden, can be shown with JavaScript */
+        }
+    
