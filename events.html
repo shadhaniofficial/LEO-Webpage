@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEO CLUB OF CEG-Admin</title>
+    <link rel="stylesheet" href="Styles/events.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center">
+                <img src="img/pngegg.png" alt="NSS Logo"> <!-- Path to your logo image -->
+                <strong>LEO CLUB OF CEG</strong>
+            </a>
+            <nav id="navbar" class="navbar">
+                <!-- Static menu structure, dynamically controlled in original React component -->
+                <ul class="nav-links">
+                    <li><a class="nav-link scrollto active" href="admin.html">Team</a></li>
+                    <li><a class="nav-link scrollto" href="#events">Events</a></li>
+                    <li><a class="nav-link scrollto" href="#activity">UPSC Classes</a></li>
+                    <li><a class="getstarted scrollto" href="index.html">Sign out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container" >
+        <form id="eventForm1" accept="events,php">
+            <h4 style="margin-left: 10px;">Manage Event</h4>
+          <div class="row" style="display: flex; flex-direction: rows; align-content: flex-start;">
+            <div style="margin-right: 20px;">
+              <input style="margin: 10px;" type="text" id="options" list="option-list" placeholder="Select Event" required/>
+                <datalist id="option-list">
+                    <option value="UTSAV">
+                    <option value="Thulir">
+                    <option value="Vidiyal">
+                </datalist>
+              
+              <input style="margin: 10px;" type="file" name="eimages" id="eimages" placeholder="image" required/>
+            
+              <input style="margin: 10px;" type="tel" placeholder="Program Officer Contact"/>
+            </div> 
+            
+            <textarea name="content" style="border-radius: 20px;" id="content" cols="30" rows="5" placeholder="Event Content"></textarea>
+              
+            
+          </div>
+          <button type="submit" id="button" style="border-radius: 30px; margin: 10px;">Submit</button>
+        </form>  
+        <div id="notification"></div>
+      </div>
+      <br></br>
+      <div class="container" >
+        <form id="eventForm1" accept="events,php">
+          <div class="row" style="display: flex; flex-direction: rows; align-content: flex-start;">
+            <div style="margin-right: 20px;">
+                <label class="switch" style="margin: 10px;">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+              
+                <strong style="margin-right: 20px; margin-left: 20px;" for="event"> Carousel Image Dimensions 1901 x 467</strong>
+                
+                <input style="width: 25% ; margin-left: 20px; margin-right: 20px; border-radius: 30px;" type="file" name="image" id="image" placeholder="Image" required/>
+            
+          <button type="submit" id="button" style="border-radius: 30px; margin: 10px;">Submit</button>
+        </form>  
+        <div id="notification"></div>
+      </div>
+        
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-toastify/8.0.3/ReactToastify.min.js"></script>
+</body>
+</html>

@@ -1,4 +1,6 @@
 <?php
+session_start(); // Start the session
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gmail = $_POST['gmail'];
     $password = $_POST['password'];
@@ -9,13 +11,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die('Connection Failed: ' . $conn->connect_error);
     } else {
-        $stmt = $conn->prepare("INSERT INTO signin (gmail, password) VALUES (?, ?)");
+        $stmt = $conn->prepare("SELECT * FROM signin WHERE gmail = ? AND password = ?");
         $stmt->bind_param("ss", $gmail, $password);
         $stmt->execute();
-        echo "Registration Successful!";
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            // Successful login
+            $_SESSION['gmail'] = $gmail; // Set session variable
+            $response = array('success' => true, 'redirect' => 'admin.html');
+        } else {
+            // Failed login
+            $response = array('success' => false, 'message' => 'Invalid email or password!');
+        }
+        
+        echo json_encode($response); // Return response as JSON
+        exit();
+        
         $stmt->close();
         $conn->close();
     }
 }
 ?>
-

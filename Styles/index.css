@@ -383,6 +383,7 @@ button {
 /* image */
 .carousel-item img {
     height: 60vh; /* Set the image height to 50% of the viewport height */
+    width: 100%; /* Set the image width to 100% */
     object-fit: cover; /* Maintain aspect ratio and cover entire container */
 }
 

@@ -4,18 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEO CLUB OF CEG-Sign in</title>
-    <link rel="stylesheet" href="Styles/admin.css">
+    <link rel="stylesheet" href="Styles/signin.css">
+    <script>
+        function signIn() {
+            event.preventDefault(); // Prevent form submission
+            
+            var form = document.querySelector('form');
+            var formData = new FormData(form);
+            
+            fetch('connect.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = data.redirect; // Redirect on successful login
+                } else {
+                    alert(data.message); // Alert on failed login
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="connect.php" method="post">
+            <form onsubmit="signIn()">
                 <h3>Sign in</h3>
-            </br>
-                <input type="email" placeholder="Email" id="gmail" name="gmail"/>
-                <input type="password" placeholder="Password" id="gmail" name="password"/>
+                <br>
+                <input type="email" placeholder="Email" id="gmail" name="gmail" required/>
+                <input type="password" placeholder="Password" id="password" name="password" required/>
                 <a href="#">Forgot password</a>
-                <button>Sign In</button>
+                <button type="submit">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -28,7 +52,5 @@
             </div>
         </div>
     </div>
-    
-    
 </body>
 </html>

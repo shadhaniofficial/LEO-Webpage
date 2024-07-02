@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEO CLUB OF CEG-Admin</title>
     <link rel="stylesheet" href="Styles/admin.css">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
     <header id="header" class="header">
@@ -18,40 +19,59 @@
                 <!-- Static menu structure, dynamically controlled in original React component -->
                 <ul class="nav-links">
                     <li><a class="nav-link scrollto active" href="#team">Team</a></li>
-                    <li><a class="nav-link scrollto" href="#events">Events</a></li>
+                    <li><a class="nav-link scrollto" href="events.html">Events</a></li>
                     <li><a class="nav-link scrollto" href="#activity">UPSC Classes</a></li>
-                    <li><a class="getstarted scrollto" href="/Signout">Sign out</a></li>
+                    <li><a class="getstarted scrollto" href="index.html">Sign out</a></li>
                 </ul>
-                <button class="mobile-menu-icon">
-                    <!-- This will toggle between menu icons in React -->
-                    ☰
-                </button>
             </nav>
         </div>
     </header>
 
+    <div class="admin-container">
+        <div class="form-con">
+            <h2>Manage Team</h2>
+            <form id="addMemberForm" enctype="multipart/form-data">
+                <input type="text" name="name" id="name" placeholder="Name" required/>
+                <input type="text" name="designation" id="designation" placeholder="Designation" required/>
+                <input type="file" name="image" id="image" placeholder="Image" required/>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="notification"></div>
+        </div>
+        <div class="display-container team-members">
+            <!-- Container to display team members, if needed -->
+        </div>
+    </div>
+
     <script>
-        // JavaScript to handle mobile menu toggle and scroll effect
-        document.addEventListener('DOMContentLoaded', () => {
-            const header = document.getElementById('header');
-            const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-            const navbar = document.getElementById('navbar');
-            let isMobileMenuOpen = false;
+        $(document).ready(function() {
+            $('#addMemberForm').submit(function(e) {
+                e.preventDefault(); // Prevent default form submission
 
-            // Handle scroll effect
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 0) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
-            });
+                // Create FormData object to send form data
+                var formData = new FormData(this);
 
-            // Handle mobile menu toggle
-            mobileMenuIcon.addEventListener('click', () => {
-                isMobileMenuOpen = !isMobileMenuOpen;
-                navbar.classList.toggle('nav-links-mobile', isMobileMenuOpen);
-                mobileMenuIcon.textContent = isMobileMenuOpen ? '✕' : '☰';
+                // AJAX request to handle form submission
+                $.ajax({
+                    url: 'admin.php',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'text',
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        $('#notification').text(response); // Show response in notification area
+                        $('#addMemberForm')[0].reset(); // Reset form fields
+
+                        // Hide notification after 2 seconds
+                        setTimeout(function() {
+                            $('#notification').fadeOut();
+                        }, 2000);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
             });
         });
     </script>
