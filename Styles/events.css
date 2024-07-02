@@ -216,8 +216,8 @@ select {
   width: 100%;
   padding: 1em;
   line-height: 1.4;
-  background-color: #f9f9f9;
-  border: 1px solid #686868;
+  background-color: #eee;
+  border: 1px solid #eee;
   border-radius: 3px;
   -webkit-transition: 0.35s ease-in-out;
   -moz-transition: 0.35s ease-in-out;
@@ -232,8 +232,8 @@ textarea {
     width: 100%;
     padding: 1em;
     
-    background-color: #f9f9f9;
-    border: 1px solid #636363;      
+    background-color: #eee;
+    border: 1px solid #eee;      
     border-radius: 3px;
     -webkit-transition: 0.35s ease-in-out;
     -moz-transition: 0.35s ease-in-out;
